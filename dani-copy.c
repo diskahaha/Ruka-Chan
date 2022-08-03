@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main(void){
-  puts("dani-botz");
+  puts("Ruka-Chan");
   return 0;
 }
