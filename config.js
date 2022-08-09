@@ -5,7 +5,7 @@ import moment from 'moment-timezone'
 
 global.owner = [
   ['+62 821-5415-6241'],
-  ['+62 821-5415-6241', 'Amirr Official👑', true],
+  ['+62 821-5415-6241', 'Amirr Official', true],
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.mods = [] // Want some help?
@@ -34,11 +34,11 @@ global.APIKeys = { // APIKey Here
   'https://leyscoders-api.herokuapp.com': 'dappakntlll',
   'https://violetics.pw': 'beta'
 }
-global.wm = '                「 Amirr_ᴏғᴄ あ⁩ 」' //Main Watermark
+global.wm = '                「 Amirr 」' //Main Watermark
 
 global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘օառɛʀ - Amirr👑˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
 
-global.wm3 = '⫹⫺ Ruka 𝗕𝗢𝗧'
+global.wm3 = '⫹⫺ RUKA BOT'
 
 global.botdate = `⫹⫺ Date :  ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}`
 
@@ -47,7 +47,7 @@ global.bottime = `𝗧 𝗜 𝗠 𝗘 : ${moment.tz('Asia/Jakarta').format('HH:m
 global.titlebot = `⫹⫺ Time Sever : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}\n⫹⫺ Date Server :  ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
 `
 
-global.author = '                「 Ruka-ʙᴏᴛᴢ_ᴏғᴄ あ⁩ 」'
+global.author = '                「 Ruka-Bot⁩ 」'
 
 global.thumbnailUrl = [
   'https://telegra.ph/file/81260a8b9e8cff26d2b48.jpg', 'https://telegra.ph/file/ac4928f0824a2a0492737.jpg',
@@ -86,8 +86,8 @@ global.bg = ['https://telegra.ph/file/2b71a8d46d29351479fbc.jpg', 'https://teleg
 /*============== NOMOR ==============*/
 global.nomorbot = '6285321043537'
 global.nomorown = '6282154156241'
-global.namebot = 'Ruka-ʙᴏᴛᴢ_ᴏғᴄ'
-global.nameown = 'Amirr Official 👑'
+global.namebot = 'RUKA-BOT'
+global.nameown = 'Amirr Official '
 
 /*=========== FAKE SIZE ===========*/
 global.fsizedoc = '99999999999999' // default 10TB
