@@ -4,11 +4,11 @@ let pp = await conn.profilePictureUrl(m.chat).catch(_ => null)
 let pepe = pp ? await (await fetch(pp)).buffer() : Buffer.alloc(0)
 let str = ` ${conn.getName(m.sender)} Want Support Bot?
 *PAYMENT ↓*
-_*Pulsa/Pulse(Telkomsel):*_ 081352848936
-_*Dana/Gopay:*_ 081352848936
+_*Pulsa/Pulse(Telkomsel):*_ 082154156241
+_*Dana/Gopay:*_ 082154156241
 Setelah melakukan donasi kirim bukti pembayaran ke owner,Dengan melakukan donasi,kamu telah mensupport bot ini agar on 24 jam dan fast respon
 `
-conn.sendHydrated(m.chat, str, wm, pepe, 'https://github.com/YTDANIBOTZ/', '𝙶𝙸𝚃𝙷𝚄𝙱', null, null, [
+conn.sendHydrated(m.chat, str, wm, pepe, 'https://github.com/USER0106', '𝙶𝙸𝚃𝙷𝚄𝙱', null, null, [
 ['𝙼𝙴𝙽𝚄', '/menu']
 ], m)
 
