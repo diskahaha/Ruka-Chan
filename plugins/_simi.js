@@ -1,19 +1,15 @@
-let fetch = require('node-fetch')
-let handler = m => m
 
-handler.before = async (m) => {
-    let chat = global.db.data.chats[m.chat]
-    if (chat.simi && !chat.isBanned && !m.fromMe) {
-        if (/^.*false|disnable|(turn)?off|0/i.test(m.text)) return
-        if (!m.text) return
-        let res = await fetch(global.API('https://api-sv2.simsimi.net', '/v2/', { text: encodeURIComponent(m.text), lc: "id" }, ''))
-        if (!res.ok) throw 'maaf simi lagi sibuk'
-        let json = await res.json()
-        if (json.success == 'lu ngomong apa sih') await m.reply("gapaham cok :'v")
-        await m.reply(`${json.success}`)
-   // m.reply(`${json.success}`)
+import fetch from 'node-fetch'
+
+export async function before(m, { isAdmin, isBotAdmin }) {
+if (m.isBaileys && m.fromMe)
         return !0
+    if (!m.isGroup) return !1
+    let chat = global.db.data.chats[m.chat]
+    let bot = global.db.data.settings[this.user.jid] || {}
+    if (chat.simi) {
+        let api = await fetch(`https://api.simsimi.net/v2/?text=${m.text}&lc=id`)
+  let res = await api.json()
+  m.reply(`*Simi:* ${res.success}`)
     }
-    return true
 }
-module.exports = handler

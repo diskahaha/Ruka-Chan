@@ -1,12 +1,12 @@
-let fetch = require('node-fetch')
-let handler = async (m, { text }) => {
-  let res = await fetch(global.API('https://api-sv2.simsimi.net', '/v2/', { text: text, lc: "id" }, ''))
-  let json = await res.json()
-  if (json.success) m.reply(json.success)
-  else throw json
+import fetch from 'node-fetch'
+let handler = async (m, {text, args}) => {
+  if (!args[0]) throw `Use example .simi halo`
+  let api = await fetch(`https://api.simsimi.net/v2/?text=${text}&lc=id`)
+  let res = await api.json()
+  m.reply(res.success)
 }
-handler.help = ['simi', 'simsimi', 'simih'].map(v => v + ' <teks>')
+handler.command = ['simi']
 handler.tags = ['fun']
-handler.command = /^((sim)?simi|simih)$/i
+handler.help = ['simi']
 
-module.exports = handler
+export default handler
