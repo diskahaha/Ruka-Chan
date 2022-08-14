@@ -110,7 +110,7 @@ ptt: true
 })
     // conn.sendButton(m.chat, 
     //`*Hi, ${name} 👋*\n\n`, 
-  //  text.trim(), './media/marin.jpg', [
+  //  text.trim(), [
 // [`Speedtest`, `${_p}ping`],
 // [`Owner`, `${_p}owner`]
 //], m, {asLocation: true})
