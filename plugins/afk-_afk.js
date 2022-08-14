@@ -1,10 +1,14 @@
 export function before(m) {
     let user = global.db.data.users[m.sender]
     if (user.afk > -1) {
-        conn.sendButtonDoc(m.chat,`
-  Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
+        let caption = `
+  *Kamu berhenti AFK* ${user.afkReason ? ' setelah ' + user.afkReason : ''}
   Selama ${(new Date - user.afk).toTimeString()}
-  `,wm,'Hai Bang','Ya',m,fakeig)
+  `.trim()
+  let kataafk = ['mau turu', 'mau nyolong', 'Ke rumah ayang', 'jagain lilin', 'beli pop es', 'kawin lari', 'main kelereng', 'petak umpet', 'push renk', 'push up joni', 'olahraga', 'onani', 'beraq', 'open bo', 'di suruh emak', 'kerja']
+conn.sendButton(m.chat, caption, author, null, [
+        ['Afk Lagi', '.afk ' + kataafk.getRandom()]
+    ], m)
         user.afk = -1
         user.afkReason = ''
     }
@@ -17,11 +21,14 @@ export function before(m) {
         if (!afkTime || afkTime < 0)
             continue
         let reason = user.afkReason || ''
-        conn.sendButtonDoc(m.chat,`
-  Jangan tag dia!
-  Dia sedang AFK ${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}
+        let caption = `
+  *Jangan tag dia!*
+  Dia sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
   Selama ${(new Date - afkTime).toTimeString()}
-  `,wm,'Maaf Bang','Ya',m,fakeig)
+  `.trim()
+conn.sendButton(m.chat, caption, author, null, [
+        ['Berhenti', '/tts id kok berhenti']
+    ], m)
     }
     return true
 }
