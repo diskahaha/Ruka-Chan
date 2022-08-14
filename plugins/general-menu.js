@@ -100,7 +100,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
    // conn.sendMessage(m.chat, { video: { url: 'https://telegra.ph/file/c82d5c358495e8ef15916.mp4' }, gifPlayback: true, gifAttribution: ~~(Math.random() * 2), caption: text.trim(), footer: await conn.getName(conn.user.jid) , templateButtons: [{ quickReplyButton: { displayText: 'Speedtest', id: `${_p}ping` }}, { quickReplyButton: { displayText: 'Owner', id: `${_p}owner` }} ] })
    conn.sendButton(m.chat, `*${wish()}, ${name} 👋*`, text.trim(), await genProfile(conn, m), [['Speedtest', _p + 'ping'], ['Owner', _p + 'owner']], false, { quoted: fkon, contextInfo: { externalAdReply: { showAdAttribution: true,
     mediaUrl: "https://Instagram.com/bot_whangsaf",
-    mediaType: "VIDEO",
     description: "https://Instagram.com/bot_whangsaf", 
     title: '𝕭𝖔𝖙 • Andii ༢࿔ྀ',
     body: wm,
@@ -108,7 +107,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     sourceUrl: sgc
 }
 } })
-conn.sendFile(m.chat, vn, 'dj1.mp3', null, m, true, {
+conn.sendFile(m.chat, 'dj1.mp3', null, m, true, {
 type: 'audioMessage', 
 ptt: true 
 })
