@@ -45,17 +45,14 @@ handler.all = async function (m) {
 					title: global.ucapan,
 					body: wm,
 					mediaUrl: sgc,
-					description: 'simple bot esm',
-					previewType: "PHOTO",
-					thumbnail: await (await fetch(urls)).buffer(),
-					sourceUrl: "https://github.com/FahriAdison",					
+					description: '𝕭𝖔𝖙 • Andii ༢࿔',
+					sourceUrl: "https://github.com/𝕭𝖔𝖙 • Andii ༢࿔ྀ",					
 				}
 			}
 		}
 		global.fakeig = {
          contextInfo: { externalAdReply: { showAdAttribution: true,
             mediaUrl: "https://Instagram.com/bot_whangsaf",
-            mediaType: "VIDEO",
             description: "https://Instagram.com/bot_whangsaf",
             body: wm
     }
@@ -63,7 +60,6 @@ handler.all = async function (m) {
 global.fakefb = {
          contextInfo: { externalAdReply: { showAdAttribution: true,
             mediaUrl: "https://Facebook.com/adison_fahri",
-            mediaType: "VIDEO",
             description: "https://Facebook.com/adison_fahri",
             body: wm
     }
@@ -130,7 +126,7 @@ global.fakefb = {
                                "jpegThumbnail": fs.readFileSync('./thumbnail.jpg') //Gambarnye
                            },
                            "title": wm, //Kasih namalu 
-                           "description": "Simple Bot Esm", 
+                           "description": "𝕭𝖔𝖙 • Andii ༢࿔ྀ", 
                            "currencyCode": "USD",
                            "priceAmount1000": "20000000",
                            "retailerId": "Ghost",
