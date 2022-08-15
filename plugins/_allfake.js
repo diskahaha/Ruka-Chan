@@ -56,22 +56,16 @@ handler.all = async function (m) {
          contextInfo: { externalAdReply: { showAdAttribution: true,
             mediaUrl: "https://Instagram.com/bot_whangsaf",
             mediaType: "VIDEO",
-            description: "https://Instagram.com/bot_whangsaf", 
-            title: 'Simple Bot Esm',
-            body: wm,
-            thumbnailUrl: pp,
-            sourceUrl: sgc
+            description: "https://Instagram.com/bot_whangsaf",
+            body: wm
     }
     } }
 global.fakefb = {
          contextInfo: { externalAdReply: { showAdAttribution: true,
             mediaUrl: "https://Facebook.com/adison_fahri",
             mediaType: "VIDEO",
-            description: "https://Facebook.com/adison_fahri", 
-            title: 'Simple Bot Esm',
-            body: wm,
-            thumbnailUrl: pp,
-            sourceUrl: sgc
+            description: "https://Facebook.com/adison_fahri",
+            body: wm
     }
     } }
 		// Fake 🤥
