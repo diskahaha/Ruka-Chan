@@ -77,7 +77,7 @@ global.fakefb = {
                "audioMessage": {
                         "mimetype":"audio/ogg; codecs=opus",
                         "seconds": "999999999999",
-                        "ptt": "true"
+                        "ptt": "false"
                                }
                              } 
                             }
@@ -167,18 +167,15 @@ global.fakefb = {
        }
        
                     global.fgif = {
-            key: { 
-                 fromMe: false,
-                 participant: `0@s.whatsapp.net`, ...(m.chat ? 
-            { remoteJid: "17608914335-1625305606@g.us" } : {}) 
-                       },
+            key: {
+                 participant : '0@s.whatsapp.net'},
             message: { 
                         "videoMessage": { 
                         "title": wm,
                         "h": `Hmm`,
                         'seconds': '999999999', 
                         'gifPlayback': 'true', 
-                        'caption': wm,
+                        'caption': bottime,
                         'jpegThumbnail': fs.readFileSync('./thumbnail.jpg')
                                }
                               }
