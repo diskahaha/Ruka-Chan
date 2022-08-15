@@ -104,9 +104,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     body: wm
 }
 } })
-conn.sendFile(m.chat, 'dj1.mp3', null, m, true, {
+conn.sendFile(m.chat, null, m, true, {
 type: 'audioMessage', 
-ptt: true 
+ptt: false 
 })
     // conn.sendButton(m.chat, 
     //`*Hi, ${name} 👋*\n\n`, 
