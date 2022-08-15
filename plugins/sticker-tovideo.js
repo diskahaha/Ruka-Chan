@@ -1,9 +1,9 @@
-let { webp2mp4 } = require('../lib/webp2mp4')
-let { ffmpeg } = require('../lib/converter')
-let handler = async (m, { conn }) => {
-    if (!m.quoted) throw 'Reply sticker or audio!'
+import { webp2mp4 } from '../lib/webp2mp4.js'
+import { ffmpeg } from '../lib/converter.js'
+let handler = async (m, { conn, usedPrefix, command }) => {
+    if (!m.quoted) throw `Balas stiker/audio yang ingin diubah menjadi video dengan perintah ${usedPrefix + command}`
     let mime = m.quoted.mimetype || ''
-    if (!/webp|audio/.test(mime)) throw 'Reply sticker or audio!'
+    if (!/webp|audio/.test(mime)) throw `Balas stiker/audio yang ingin diubah menjadi video dengan perintah ${usedPrefix + command}`
     let media = await m.quoted.download()
     let out = Buffer.alloc(0)
     if (/webp/.test(mime)) {
@@ -17,11 +17,11 @@ let handler = async (m, { conn }) => {
             '-shortest'
         ], 'mp3', 'mp4')
     }
-    await conn.sendFile(m.chat, out, 'out.mp4', null, m)
+    await conn.sendFile(m.chat, out, 'out.mp4', '*DONE*', m, 0, { thumbnail: out })
 }
-handler.help = ['tovideo (reply)']
+handler.help = ['tovideo']
 handler.tags = ['sticker']
 
 handler.command = ['tovideo']
 
-module.exports = handler
+export default handler
