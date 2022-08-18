@@ -1,69 +1,32 @@
-let limit = 80
-import fetch from 'node-fetch'
-import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper';
+let axios = require('axios')
+const fetch = require('node-fetch')
+let limit = 1024354
+const { servers, yta } = require('../lib/y2mate')
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
-let name = await conn.getName(who)
-
   if (!args || !args[0]) throw 'Uhm... urlnya mana?'
   let chat = global.db.data.chats[m.chat]
-  const isY = /y(es)/gi.test(args[1])
-  const { thumbnail, audio: _audio, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
-  const limitedSize = (isPrems || isOwner ? 99 : limit) * 1024
-  let audio, source, res, link, lastError, isLimit
-  for (let i in _audio) {
-    try {
-      audio = _audio[i]
-      isLimit = limitedSize < audio.fileSize
-      if (isLimit) continue
-      link = await audio.download()
-      if (link) res = await fetch(link)
-      isLimit = res?.headers.get('content-length') && parseInt(res.headers.get('content-length')) < limitedSize
-      if (isLimit) continue
-      if (res) source = await res.arrayBuffer()
-      if (source instanceof ArrayBuffer) break
-    } catch (e) {
-      audio = link = source = null
-      lastError = e
-    }
-  }
-  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Error: ' + (lastError || 'Can\'t download audio')
-  if (!isY && !isLimit) await conn.sendFile(m.chat, thumbnail, 'thumbnail.jpg', `
-*${htki} YOUTUBE ${htka}*
-
-*${htjava} Title:* ${title}
-*${htjava} Type:* mp3
-*${htjava} Filesize:* ${audio.fileSizeH}
-
-*L O A D I N G. . .*
-`.trim(), m)
-  if (!isLimit) await conn.sendFile(m.chat, source, title + '.mp3', `
-*${htki} YOUTUBE ${htka}*
-
-*${htjava} Title:* ${title}
-*${htjava} Type:* mp3
-*${htjava} Filesize:* ${audio.fileSizeH}
-
-*L O A D I N G. . .*
-`.trim(), m, null, { fileLength: fsizedoc, seconds: fsizedoc, mimetype: 'audio/mp4', contextInfo: {
-          externalAdReply :{
-    mediaUrl: sig,
-    mediaType: 2,
-    description: wm, 
-    title: '👋 Hai, ' + name + ' ' + ucapan,
-    body: botdate,
-    thumbnail: await(await fetch(thumbnail)).buffer(),
-    sourceUrl: source
-     }}
-  })
+  let server = (args[1] || servers[0]).toLowerCase()
+  let { dl_link, thumb, title, filesize, filesizeF} = await yta(args[0], servers.includes(server) ? server : servers[0])
+  let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize 
+  if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp3', `
+┏┉━━━━━━━━━━━❏
+┆ *YOUTUBE MP3*
+├┈┈┈┈┈┈┈┈┈┈┈
+┆• *Judul:* ${title}
+│• *Type:* MP3
+┆• *📥 Ukuran File:* ${filesizeF}
+└❏
+`.trim(), m, null, {
+  asDocument: chat.useDocument
+})
 }
-handler.help = ['mp3', 'a'].map(v => 'yt' + v + ` <url> <without message>`)
+handler.help = ['mp3','a'].map(v => 'yt' + v + ` <url>`)
 handler.tags = ['downloader']
 handler.command = /^yt(a|mp3)$/i
 
+handler.fail = null
 handler.exp = 0
-handler.register = false
-handler.limit = true
+handler.limit = false
 
-export default handler
+module.exports = handler
+
