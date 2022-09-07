@@ -92,4 +92,3 @@ handler.fail = null
 handler.limit = true
 
 module.exports = handler
-A
